@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            $("#navbar").load("navbar.html");
+        });
+    </script>
+    <title>Knowledge | VSC</title>
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <div class="container mt-2">
+
+        <!--  -->
+        <!-- TITLE -->
+        <!--  -->
+        <div class="title text-center my-5">
+            <h1><b>Visual Studio Code</b></h1>
+            <h6>Some extras informations that may be useful</h6>
+        </div>
+
+
+        <!--  -->
+        <!-- 1. ACCORDION -->
+        <!--  -->
+        <div class="accordion my-2" id="accordion1">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion1" aria-expanded="false" aria-controls="flush-collapse-accordion1">
+                    <div class="number"></div>Shortcuts
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion1" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion1" data-bs-parent="#accordion1">
+                    <div class="accordion-body">
+
+                        <code>CTRL + `</code> - open/hide terminal <br>
+                        <code>CTRL + F2</code> - simultaneous change of every selected phrase in document <br>
+                        <code>CTRL + S</code> - save document <br>
+                        <code>F2</code> - change name of file <br>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- END OF 1. ACCORDION -->
+        <!--  -->
+        <!-- <div class="accordion my-2" id="accordion2">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion2" aria-expanded="false" aria-controls="flush-collapse-accordion2">
+                    <div class="number"></div>Margins
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion2" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion2" data-bs-parent="#accordion2">
+                    <div class="accordion-body">
+                        <p>Now left/right margin's we create using this class:</p>
+                        <code>me-5</code> - for right margin <br>
+                        <code>me-5</code> - for left margin <br>
+                        <p>So let's gooo!</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+
+    <!--  -->
+    <!-- SCRIPT FOR COUNTING POSTS -->
+    <!--  -->
+    <script>
+        var numbers = [];
+        numbers = document.querySelectorAll('div.number');
+        function count(element, index, array) {
+            element.innerHTML = index + 1 + '.&nbsp;';
+        }
+        numbers.forEach(count);
+    </script>
+
+</body>
+</html>

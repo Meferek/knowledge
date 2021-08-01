@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            $("#navbar").load("../navbar.html");
+        });
+    </script>
+    <title>Knowledge | Laravel 8</title>
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <div class="container mt-2">
+
+        <!--  -->
+        <!-- TITLE -->
+        <!--  -->
+        <div class="title text-center my-5">
+            <h1><b>Laravel 8</b></h1>
+            <h6>Shortcut of all the most important commands and other stuff ;)</h6>
+        </div>
+
+
+        <!--  -->
+        <!-- 1. ACCORDION -->
+        <!--  -->
+        <div class="accordion my-2" id="accordion1">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion1" aria-expanded="false" aria-controls="flush-collapse-accordion1">
+                    <div class="number"></div>Commands
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion1" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion1" data-bs-parent="#accordion1">
+                    <div class="accordion-body">
+                        <code>php artisan make:controller [name]</code> - create a new controller <br>
+                        <code>php artisan make:model [name] -m</code> - create a new model, with special migration (use always with m)<br>
+                        <code>php artisan migrate</code> - make all migrations <br>
+                        <code>php artisan make:factory [name]</code> - create a new factory file <br>
+                        <code>php artisan tinker</code> - special thing to use later commend below <br>
+                        <code>\App\Models\Item::factory()->count(5)->create();</code> - generate 5 fake items in database if factory file is created well <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- END OF 1. ACCORDION -->
+        <!--  -->
+        <div class="accordion my-2" id="accordion2">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion2" aria-expanded="false" aria-controls="flush-collapse-accordion2">
+                    <div class="number"></div>Installation
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion2" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion2" data-bs-parent="#accordion2">
+                    <div class="accordion-body">
+                        <ol>
+                            <li>Install this aplications:
+                                <ul>
+                                    <li>git</li>
+                                    <li>gitgub</li>
+                                    <li>composer</li>
+                                    <li>xampp</li>
+                                </ul>
+                            </li>
+                            <li>Create a new folder where you'll have all web aplications (or use htdocs)</li>
+                            <li>Run this commands:
+                                <ul>
+                                    <li><code>composer global require laravel/installer</code></li>
+                                    <li><code>laravel new [name]</code></li>
+                                    <li><code>cd [name]</code></li>
+                                    <li><code>php artisan serv</code> - (optional to run laravel)</li>
+                                </ul>
+                            </li>
+                            <li>If u will use database, create a new one in MySQL witch be named like your Laravel app</li>
+                            <li>After connect your DB run <code>php artisan migrate</code></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion my-2" id="accordion3">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion3" aria-expanded="false" aria-controls="flush-collapse-accordion3">
+                    <div class="number"></div>How to install login system?
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion3" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion3" data-bs-parent="#accordion3">
+                    <div class="accordion-body">
+                        <p>If you want to create web aplication with users, you have to follow this instructions:</p>
+                        <ol>
+                            <li>Create a database and connect it to Laravel</li>
+                            <li>And use this commands:
+                                <ul>
+                                    <li><code>composer require laravel/ui</code></li>
+                                    <li><code>composer require laravelcollective/html</code></li>
+                                    <li><code>php artisan ui vue --auth</code></li>
+                                    <li><code>php artisan ui:auth</code></li>
+                                </ul>
+                            </li>
+                            <li>Then run <code>php artisan migrate</code></li>
+                        </ol>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  -->
+    <!-- SCRIPT FOR COUNTING POSTS -->
+    <!--  -->
+    <script>
+        var numbers = [];
+        numbers = document.querySelectorAll('div.number');
+        function count(element, index, array) {
+            element.innerHTML = index + 1 + '.&nbsp;';
+        }
+        numbers.forEach(count);
+    </script>
+
+</body>
+</html>
