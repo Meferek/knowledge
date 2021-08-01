@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
+    <div class="container-fluid">
+        <a class="navbar-brand order-lg-2 py-2 d-none d-lg-block" href="https://krysiak.xyz" target="_blank">Knowledge by Meferek</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/index.html">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/doker.html">Docker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/scss.html">SCSS</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Frameworks
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/frameworks/bs5.html">Bootstrap 5</a></li>
+                        <li><a class="dropdown-item" href="/frameworks/laravel8.html">Laravel 8</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    jQuery(function($) {
+        var path = window.location.href; 
+        $(".nav-link").each(function() {
+            if (this.href === path) {
+                $(this).parent().addClass('active');
+            }   
+        });
+        $(".dropdown-item").each(function() {
+            if (this.href === path) {
+                $(this).parent().parent().parent().addClass('active');
+            }   
+        });
+    });
+</script>
