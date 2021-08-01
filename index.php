@@ -8,5 +8,12 @@
 </head>
 <body>
     <h1>INIT</h1>
+
+    <?php
+
+        echo 'LOL';
+
+    ?>
+    
 </body>
 </html>
