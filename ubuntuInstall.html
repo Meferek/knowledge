@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            $("#navbar").load("navbar.html");
+        });
+    </script>
+    <title>Knowledge | Ubuntu Web Server</title>
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <div class="container mt-2">
+
+        <!--  -->
+        <!-- TITLE -->
+        <!--  -->
+        <div class="title text-center my-5">
+            <h1><b>Ubuntu Web Server</b></h1>
+            <h6>How to install and configure Ubuntu Web Server</h6>
+        </div>
+
+
+        <!--  -->
+        <!-- 1. ACCORDION -->
+        <!--  -->
+        <div class="accordion my-2" id="accordion1">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion1" aria-expanded="false" aria-controls="flush-collapse-accordion1">
+                    <div class="number"></div>Installation
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion1" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion1" data-bs-parent="#accordion1">
+                    <div class="accordion-body">
+
+                        <p>The classic installation by GUI form bootable pendrive. The newest Ubuntu ISO you can download from offical page.</p>
+                        <p>I recommend to install minimal installation process and autoupdate to newest version before we configure our webpage server.</p>
+                        <p>This instructions are created for Ubuntu 20.4</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- END OF 1. ACCORDION -->
+        <!--  -->
+        <!--  -->
+        <!-- 2. ACCORDION -->
+        <!--  -->
+        <div class="accordion my-2" id="accordion2">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion2" aria-expanded="false" aria-controls="flush-collapse-accordion2">
+                    <div class="number"></div>Configuration
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion2" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion2" data-bs-parent="#accordion2">
+                    <div class="accordion-body">
+
+                        <ul>
+                            <h4>Prepare environment</h4>
+                            <li>
+                                Install all our updates for Ubuntu and update all your packages using  <code>sudo apt-get update</code>
+                            </li>
+                            <li>
+                                Switch laptop lid switch off:
+                                <ol>
+                                    <li><code>nano /etc/systemd/logind.conf</code></li>
+                                    <li><code>sudo service systemd-logind restart</code></li>
+                                    <li>Uncomment HandleLidSwitch and change value to: ignore</li>
+                                </ol>
+                                <br>
+                            </li>
+                            <li>
+                                Change power settings by turning off automatic suspend
+                                <br>
+                            </li>
+                            <li class="mt-2">
+                                Install openSSH:
+                                <ol>
+                                    <li><code>sudo apt install openssh-server</code></li>
+                                    <li><code>sudo systemctl enable ssh</code></li>
+                                    <li><code>sudo systemctl start ssh</code></li>
+                                </ol>
+                                <br>
+                            </li>
+                            <h4>mariaDB and phpMyAdmin</h4>
+                            <li>
+                                Install mariaDB: <code>sudo apt install mariadb-server mariadb-client</code>
+                            </li>
+                            <li>
+                                Install phpmyadmin: 
+                                <ol>
+                                    <li>
+                                        <code>sudo apt install phpmyadmin</code>
+                                    </li>
+                                    <li>DON'T SELECT ANYTHING (between apache2 or light)</li>
+                                    <li>Create database (YES) and write your password</li>
+                                    <li><code>sudo ln -s /usr/share/phpmyadmin /var/www/your_domain/phpmyadmin</code></li>
+                                    <li>PHPMYADMIN is ready</li>
+                                </ol>
+                                <br>
+                            </li>
+                            <li>
+                                Make PhpMyAdmin more secure:
+                                <ol>
+                                    <li>
+                                        <code>cd /var/www/html</code>
+                                    </li>
+                                    <li><code>sudo mv phpmyadmin [yourSecretName]</code></li>
+                                </ol>
+                                <br>
+                            </li>
+                            <li>
+                                Create new user in Database:
+                                <ol>
+                                    <li><code>CREATE USER username IDENTIFIED BY 'password';</code></li>
+                                    <li><code>GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';</code></li>
+                                </ol>
+                                <br>
+                            </li>
+                            <li>
+                                Configure phpMyAdmin wih Nginx
+                                <ol>
+                                    <li>Create new file <code>sudo nano /etc/nginx/snippets/phpmyadmin.conf</code></li>
+                                    <li>Write below text to this file
+                                        <pre>
+
+        location /phpmyadmin {
+            root /usr/share/;
+            index index.php index.html index.htm;
+            location ~ ^/phpmyadmin/(.+\.php)$ {
+                try_files $uri =404;
+                root /usr/share/;
+                fastcgi_pass unix:/run/php/php8.0-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include /etc/nginx/fastcgi_params;
+            }
+
+            location ~* ^/phpmyadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
+                root /usr/share/;
+            }
+        }
+
+                                        </pre>
+                                    </li>
+                                    <li>
+                                        Add <code>include snippets/phpmyadmin.conf</code> to /etc/nginx/sites-available
+                                    </li>
+                                    <li>
+                                        And uncomment <code>location ~ \.php$ {}</code> ( ONLY ONE! FASTCGI_PASS/FASTCGI_INDEX )
+                                    </li>
+                                </ol>
+                                <br>
+                                <h4>Make phpmyadmin working on other ports for more safty</h4>
+                                <li>
+                                    <p>Create new file in sites available that will be copy of default file configure to previous step</p>
+                                    <p>After that change ports in first two lines for any you want</p>
+                                    <p>Comment <code>include snippets/phpmyadmin.conf</code> in default file</p>
+                                    <p>Create symbolic link in /etc/nginx/sites-enabled for your new file (that one which is copy of default)</p>
+                                    <p>Restart nginx using <code>sudo systemctl restart nginx</code></p>
+                                </li>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- END OF 2. ACCORDION -->
+        <!--  -->
+        <!--  -->
+        <!-- 1. ACCORDION -->
+        <!--  -->
+        <div class="accordion my-2" id="accordion3">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion3" aria-expanded="false" aria-controls="flush-collapse-accordion3">
+                    <div class="number"></div>Usefull commands
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion3" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion3" data-bs-parent="#accordion3">
+                    <div class="accordion-body">
+
+                        <p>Here u have some usefull comands:</p>
+                        <code>sudo systemctl restart/stop/start/status [nameOfService]</code> - restart/stop/start/status service <br>
+                        <code>ln -s [sourcePath] [symbolicLinkPath]</code> - create a symbolic link <br>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- END OF 1. ACCORDION -->
+        <!--  -->
+    </div>
+
+
+    <!--  -->
+    <!-- SCRIPT FOR COUNTING POSTS -->
+    <!--  -->
+    <script>
+        var numbers = [];
+        numbers = document.querySelectorAll('div.number');
+        function count(element, index, array) {
+            element.innerHTML = index + 1 + '.&nbsp;';
+        }
+        numbers.forEach(count);
+    </script>
+
+</body>
+</html>
