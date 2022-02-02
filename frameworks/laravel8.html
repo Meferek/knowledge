@@ -117,6 +117,36 @@
                 </div>
             </div>
         </div>
+        <div class="accordion my-2" id="accordion4">
+            <div class="accordion-item mx-auto">
+                <h2 class="accordion-header" id="flush-heading-accordion4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-accordion4" aria-expanded="false" aria-controls="flush-collapse-accordion4">
+                    <div class="number"></div>How to download and install existing project?
+                </button>
+                </h2>
+                    <div id="flush-collapse-accordion4" class="accordion-collapse collapse" aria-labelledby="flush-heading-accordion4" data-bs-parent="#accordion4">
+                    <div class="accordion-body">
+                        <p>If u have created laravel project and you want to download it just follow this instructions:</p>
+                        <ol>
+                            <li>Download your project from repository</li>
+                            <li>Init all dependencies in your project:
+                                <ul>
+                                    <li><code>composer install</code></li>
+                                    <li><code>npm install</code></li>
+                                </ul>
+                            </li>
+                            <li>Create .env file from .env.example <code>cp .env.example .env</code></li>
+                            <li>Then generate app key <code>php artisan key:generate</code></li>
+                            <li>Create empty database named like your aplication (check name in .env file at DB_DATABASE)</li>
+                            <li>Run all your migrations using <code>php artisan migrate</code></li>
+                            <li>It's all! Run project <code>php artisan serv</code></li>
+                        </ol>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
 
